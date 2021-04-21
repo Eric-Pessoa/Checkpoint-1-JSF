@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="_template.xhtml">
+<ui:define name="content">
+
+	<p:messages id="messages"><p:autoUpdate/></p:messages>
+
+	<h:form>
+		<p:card class="card-form">
+	    <f:facet name="title">
+	        Faça seu cadastro aqui
+	    </f:facet>
+	    
+	    <div class="ui-fluid">
+	    
+	    	<div class="p-field p-grid">
+	        	<label for="NameLastName" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Name and last name</label>
+	        	<div class="p-col-12 p-md-10">
+	            	<p:inputText id="NameLastName" type="text" value="#{subscriptionBean.sub.nameLastName}" required="true">
+	            		<f:ajax event="blur" render="messages"></f:ajax>
+	            	</p:inputText>
+	        	</div>
+    	    </div>
+    	    
+    		<div class="p-field p-grid">
+        		<label for="Email" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Email</label>
+        		<div class="p-col-12 p-md-10">
+            		<p:inputText id="Email" type="text" value="#{subscriptionBean.sub.email}" required="true">
+            			<f:ajax event="blur" render="messages"></f:ajax>
+            		</p:inputText>
+        		</div>
+    	    </div>
+    	    
+    	    <div class="p-field p-grid">
+    	    	<label for="Password"  class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Password</label>
+    	    	<div class="p-col-12 p-md-10">
+    	    		<p:password id="Password" value="#{subscriptionBean.sub.senha}" required="true" toggleMask="true" redisplay="true">
+    	    			<f:ajax event="blur" render="messages"></f:ajax>
+    	    			<f:validateLength minimum="15"></f:validateLength>
+    	    		</p:password>
+    	    	</div>
+    	    </div>
+    	    
+    	    	
+    	    <div class="p-field p-grid">
+	    	    <div class="p-field p-col-12 p-md-4">
+		         	<p:outputLabel for="basic" value="Data de nascimento"/>
+		         	<p:datePicker id="basic" value="#{subscriptionBean.sub.birthDate}" required="true">
+		            	<f:ajax event="blur" render="messages"></f:ajax>
+		         	</p:datePicker>
+	            </div>
+            </div>
+            	
+    	    </div>
+    	    
+    	     <f:facet name="footer">
+	         	<p:commandButton icon="pi pi-check" value="Save" action="#{subscriptionBean.save}">
+	        		<f:ajax render="messages" execute="@form"></f:ajax>
+	         	</p:commandButton>
+	         	<p:commandButton icon="pi pi-times" value="Cancel" styleClass="ui-button-secondary" style="margin-left: .5em"/>
+	    	</f:facet>
+    	    	
+	
+	
+		</p:card>
+	</h:form>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</ui:define>
+</ui:composition>
+</html>
